@@ -1,0 +1,16 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} About Us {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+
+{% block body %} 
+
+<div id="mainBody">
+<div class="container">
+	<div class="well">
+    <p> {{ data[0].referances|raw }} </p>
+</div>
+</div>
+</div>
+ {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Favourite Products {% endblock %}
+{% block sidebar %} {{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+{% block body %} 
+
+    <div class="span9">
+    <div class="well">
+
+    <h3>Favourite Product Details</h3>
+    {{ include ('/messages.html.twig') }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Userid</th>
+                <th>Productid</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Status</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for favourite in favourites %}
+            <tr>
+                <td>{{ favourite.userid }}</td>
+                <td>{{ favourite.productid }}</td>
+                <td>{{ favourite.title }}</td>
+                <td>{{ favourite.sprice }} ₺</td>
+                <td>{{ favourite.status }}</td>
+                <td>
+                    <a href="{{ path('favourite_delete', {'id': favourite.id}) }}" class="btn btn-danger" >Delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div>  
+</div>
+</div>
+</div>
+
+ {% endblock %}

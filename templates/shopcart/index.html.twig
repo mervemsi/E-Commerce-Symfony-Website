@@ -1,0 +1,55 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Shop Cart {% endblock %}
+{% block sidebar %} {{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+{% block body %} 
+
+    <div class="span9">
+    <div class="well">
+
+    <h3>Shopcart Details</h3>
+    {{ include ('/messages.html.twig') }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Sale Price</th>
+                <th>Total</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shopcart in shopcarts %}
+            <tr>
+                <td>{{ shopcart.id }}</td>
+                <td>{{ shopcart.title }}</td>
+                <td>{{ shopcart.sprice }}</td>
+                <td>{{ shopcart.quantity }}</td>
+                <td>{{ shopcart.quantity * shopcart.sprice }} ₺</td>
+                <td>
+                    <td><a href="{{ path('shopcart_del', {'id':shopcart.id}) }}" onclick="return confirm('Are you sure to delete this record ? ');" class="btn btn-danger">Delete</a></td>
+                </td>
+            {% set total=0 %}
+            {% set total = total + (shopcart.quantity * shopcart.sprice) %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Shopcart is empty.</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>  </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('orders_new') }}" class="btn btn-block btn-success btn-large"> Buy These Products </a>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+ {% endblock %}

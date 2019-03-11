@@ -1,0 +1,50 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Top Seller Products {% endblock %}
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+{% block body %} 
+
+
+    
+	<div class="row">
+	 		
+    <div class="span9">		
+			<div class="well well-small">
+			<h4>Top Seller Products <small class="pull-right">10+ featured products</small></h4>
+			 
+			  <ul class="thumbnails">
+
+				{% for rs in topproducts %}
+
+				<li class="span2.9">
+				  <div class="thumbnail">
+					<a href="{{ path('product_detail', {'id': rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+					<div class="caption">
+					<a href="{{ path('product_detail', {'id': rs.id}) }}">
+					  <h5>{{ rs.title }}</h5>
+					  <p> 
+						Click to see more info.
+					  </p>
+					</a> 
+					  <h4 style="text-align:center"><a class="btn" href="{{ path('product_detail', {'id': rs.id}) }}"> 
+						<i class="icon-zoom-in"></i></a> <a class="btn" href="{{ path('shopcart_new_direct', {'id': rs.id}) }}">Add to <i class="icon-shopping-cart"></i></a> 
+						<a class="btn btn-primary" href="#">{{ rs.sprice }}₺</a></h4>
+					</div>
+				  </div>
+				</li>
+			
+			{% endfor %}
+			</ul>	
+
+		
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+ {% endblock %}

@@ -1,0 +1,70 @@
+{{ include('messages.html.twig') }}
+<form action="{{ path('orders_new') }}" name="order" method="post" class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">Amount of payment (Ödenecek tutar)):</label>
+    <div class="controls">
+      <input type="text" name="orders[amount]" value="{{ total }}" class="span6" placeholder="Total">
+    </div>
+  </div>
+  <hr> 
+  <h5>Shipping Buyer Information</h5>
+  <hr> 
+  <div class="control-group">
+    <label class="control-label">Name Surname (İsim Soyisim) :</label>
+    <div class="controls">
+      <input type="text" name="orders[name]" value="{{ app.user.name }}" class="span6" placeholder="Name">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Address (Adres) :</label>
+    <div class="controls">
+      <input type="text" name="orders[address]" value="{{ app.user.address }}" class="span6" placeholder="Address">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">City (Şehir) :</label>
+    <div class="controls">
+      <input type="text" name="orders[city]" value="{{ app.user.city }}" class="span6" placeholder="City">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Telephone :</label>
+    <div class="controls">
+      <input type="text" name="orders[phone]" value="{{ app.user.phone }}" class="span6" placeholder="Telephone">
+    </div>
+  </div>
+  <hr>
+  <h5>Credit Card Information</h5>
+  <hr> 
+  <div class="control-group">
+    <label class="control-label">Name Surname (İsim Soyisim) :</label>
+    <div class="controls">
+      <input type="text" name="cardholdername" class="span6" placeholder="Card name, surname">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Card Number :</label>
+    <div class="controls">
+      <input type="text" name="cardnumber" class="span6" placeholder="Card number">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Expiration Date (Son Kullanma Tarihi) :</label>
+    <div class="controls">
+      <input type="text" name="cardvaliddates" class="span6" placeholder="Month / Year">
+    </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label">Security Code (Güvenlik Kodu) :</label>
+      <div class="controls">
+        <input type="text" name="cardsecuritycode" class="span6" placeholder="Security code">
+      </div>
+   </div>
+          
+   <input type="hidden" name="token" value="{{ csrf_token('form-order') }}"/>
+   <label class="control-label">  </label>
+
+   <div class="form-actions">
+      <button type="submit" class="btn btn-success"> Buy </button>
+   </div>
+</form>

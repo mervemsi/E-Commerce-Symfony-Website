@@ -1,0 +1,85 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Products {% endblock %}
+{% block content %}
+<!-- Content =====================================================================-->
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"></a> </div>
+    <h1>ADMIN PANEL</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-home"></i> </span>
+            <h5>Products List</h5>
+            <div align="right" style="padding-top:5px; padding:5px;">      
+                 <a href="{{ path('admin_product_new') }}" class="btn btn-warning">Product Add</a>
+            </div>
+          </div>
+
+          <div class="widget-content ">
+            <table class="table table-bordered table-striped with-check">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Pprice</th>
+                <th>Sprice</th>
+                <th>Min</th>
+                <th>Image</th>
+                <th>Gallery</th>
+                <th>Category_id</th>
+                <th>Status</th>
+                <th>Show</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.amount }}</td>
+                <td>{{ product.pprice }}</td>
+                <td>{{ product.sprice }}</td>
+                <td>{{ product.min }}</td>
+
+                <td>
+                <a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resızable=no,width=600, height=500');">
+                {% if product.image==null %}
+                    <img src="{{ url('admin') }}/img/addimageicon.png" width="44">
+                {% else %}
+                    <img src="{{ asset('uploads') }}/images/{{ product.image }}" width="60">
+                {% endif %}
+                </a>
+                </td> 
+                <td> 
+                <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resızable=no,width=1000, height=800');">
+                <img src="{{ url('admin') }}/img/galleryicon.png" width="48"> </td>
+                <td>{{ product.categoryId }}</td>
+                <td>{{ product.status }}</td>
+                <td><a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-primary">Show Product</a></td>
+                <td><a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-info">Edit Product</a></td>
+                <td>{{ include('admin/product/_delete_form.html.twig') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Content part -->
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Categories {% endblock %}
+{% block content %}
+<!-- Content =====================================================================-->
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"></a> </div>
+    <h1>ADMIN PANEL</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-home"></i> </span>
+            <h5>Category Detail</h5>
+            <div align="right" style="padding-top:5px; padding:5px;">      
+                 <a href="{{ path('admin_category_new') }}" class="btn btn-warning">Category Add</a>
+            </div>
+          </div>
+
+          <div class="widget-content ">
+            <table class="table table-bordered table-striped with-check">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Parentid</th>
+                <td>{{ category.parentid }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ category.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ category.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ category.description }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ category.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+    <a href="{{ path('admin_category_index') }}" class="btn btn-inverse">Back to list</a> <br> <br>
+
+    <a href="{{ path('admin_category_edit', {'id': category.id, 'pid': category.parentid}) }}" class="btn btn-info">Edit</a>
+
+    <br><br>
+    {{ include('admin/category/_delete_form.html.twig') }}
+    
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Content part -->
+
+{% endblock %}
+

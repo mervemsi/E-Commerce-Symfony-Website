@@ -1,0 +1,54 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Order List {% endblock %}
+{% block sidebar %} {{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+{% block body %} 
+
+    <div class="span9">
+    <div class="well">
+
+    <h3>Order List</h3>
+    {{ include ('/messages.html.twig') }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Shipinfo</th>
+                <th>Status</th>
+                <th>Note</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.name }}</td>
+                <td>{{ order.amount }}₺</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.shipinfo }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.note }}</td>
+                <td>
+                    <a href="{{ path('orders_show', {'id': order.id}) }}" class="btn btn-primary">Show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">Orders is Empty.</td>
+            </tr><hr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,187 @@
+
+{{ include('admin/messages.html.twig') }}
+<form action="#" method="post" class="form-horizontal">
+            
+        <div class="widget-box">
+          <div class="widget-title">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#tab1">General Information</a></li>
+              <li><a data-toggle="tab" href="#tab2">Email Server</a></li>
+              <li><a data-toggle="tab" href="#tab3">About Us Page</a></li>
+              <li><a data-toggle="tab" href="#tab4">Contact Page</a></li>
+              <li><a data-toggle="tab" href="#tab5">References Page</a></li>
+              <li><a data-toggle="tab" href="#tab6">Delivery Page</a></li>
+            </ul>
+          </div>
+          <div class="widget-content tab-content">
+            <div id="tab1" class="tab-pane active">
+              <b>General Information</b>  
+              <div class="control-group">
+              <label class="control-label">Title(Adı) :</label>
+              <div class="controls">
+                <input type="text" name="setting[title]" value="{{ setting.title }}" class="span11" placeholder="Title">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Keywords(Anahtar Kelimeler) :</label>
+              <div class="controls">
+                <input type="text" name="setting[keywords]" value="{{ setting.keywords }}" class="span11" placeholder="Enter keyword">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Description(Kısa Açıklama):</label>
+              <div class="controls">
+                <input type="text" name="setting[description]" value="{{ setting.description }}" class="span11" placeholder="Enter description">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Company (Firma Adı):</label>
+              <div class="controls">
+                <input type="text" name="setting[company]" value="{{ setting.company }}" class="span11" placeholder="Enter description">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Address (Address):</label>
+              <div class="controls">
+                <input type="text" name="setting[address]" value="{{ setting.address }}" class="span11" placeholder="Enter description">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Fax :</label>
+              <div class="controls">
+                <input type="text" name="setting[fax]" value="{{ setting.fax }}" class="span11" placeholder="Enter description">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Status(Aktiflik Durumu) :</label>
+              <div class="controls">
+                <select name="setting[status]" value="{{ setting.status }}" class="span11" placeholder="Select status">
+                    <option>true</option>
+                    <option>false</option>
+                </select>
+              </div>
+
+            </div>
+
+            </div>
+
+            <div id="tab2" class="tab-pane">
+              <b>Email Server</b> 
+              
+              <div class="control-group">
+              <label class="control-label">Email Server :</label>
+              <div class="controls">
+                 <input type="text" name="setting[smtpserver]" value="{{ setting.smtpserver }}" class="span11" placeholder="Enter smtp server">
+              </div>
+              </div>
+
+              <div class="control-group">
+              <label class="control-label">Email :</label>
+              <div class="controls">
+                 <input type="text" name="setting[smtpemail]" value="{{ setting.smtpemail }}" class="span11" placeholder="Enter smtp email">
+              </div>
+              </div>
+
+              <div class="control-group">
+              <label class="control-label">Email Password :</label>
+              <div class="controls">
+                 <input type="text" name="setting[smtppassword]" value="{{ setting.smtppassword }}" class="span11" placeholder="Enter smtp password">
+              </div>
+              </div>
+                  
+              <div class="control-group">
+              <label class="control-label">Smtp port :</label>
+              <div class="controls">
+                <input type="text" name="setting[smtpport]" value="{{ setting.smtpport }}" class="span11" placeholder="Enter smtp port">
+              </div>
+              </div>
+
+            </div>
+
+            <div id="tab3" class="tab-pane">
+              <b>About Us</b> 
+              <div class="control-group">
+              <label class="control-label">About Us(Hakkımızda):</label>
+              <div class="controls">
+                <textarea name="setting[aboutus]" id="aboutuseditor" rows="10" cols="100">{{ setting.aboutus }}</textarea>
+              </div>
+            </div>
+
+            </div>
+
+             <div id="tab4" class="tab-pane">
+              <b>Contact</b> 
+              <div class="control-group">
+              <label class="control-label">Contact (İletişim):</label>
+              <div class="controls">
+                <textarea name="setting[contact]" id="contacteditor" rows="10" cols="100">{{ setting.contact }}</textarea>
+              </div>
+            </div>
+
+            </div>
+
+             <div id="tab5" class="tab-pane">
+              <b>References</b>  
+              <div class="control-group">
+              <label class="control-label">References (Referanslar):</label>
+              <div class="controls">
+                <textarea name="setting[referances]" id="referenceseditor" rows="10" cols="100">{{ setting.referances }}</textarea>
+              </div>
+            </div>
+            </div>
+
+            <div id="tab6" class="tab-pane">
+              <b>Delivery</b>  
+              <div class="control-group">
+              <label class="control-label">Delivery (Teslim & İade):</label>
+              <div class="controls">
+                <textarea name="setting[delivery]" id="deliveryeditor" rows="10" cols="100">{{ setting.delivery }}</textarea>
+              </div>
+            </div>
+            </div>
+
+          </div>
+        </div>
+            
+        <div class="form-actions">
+              <button type="submit" class="btn btn-success">Save</button>
+        </div>
+        <!-- 
+              <a href="{{ path('admin_setting_index') }}" class="btn btn-inverse">Back to list</a> 
+              {{ include('admin/setting/_delete_form.html.twig') }}
+        -->
+</form>
+
+ <script>
+    ClassicEditor
+    .create( document.querySelector( '#aboutuseditor' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+ </script>
+
+  <script>
+    ClassicEditor
+    .create( document.querySelector( '#contacteditor' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+ </script>
+
+  <script>
+    ClassicEditor
+    .create( document.querySelector( '#referenceseditor' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+ </script>
+
+ <script>
+    ClassicEditor
+    .create( document.querySelector( '#deliveryeditor' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+ </script>
+
+       

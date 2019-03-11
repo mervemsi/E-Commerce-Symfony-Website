@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Image{% endblock %}
+
+{% block body %}
+    <h1>Add new Image to Gallery</h1>
+
+    {{ include('admin/image/_form.html.twig') }}
+    
+    <div class="widget-content ">
+        <table class="table table-bordered table-striped with-check">
+            {%  for image in imagelist %}
+            
+                <td><img src="{{ asset('uploads') }}/images/{{ image.image }}" height="200"> <br></td>
+                <td><a href="{{ path('admin_image_erase', {'id':image.id,'pid':image.productid}) }}" onclick="return confirm('Are you sure to delete this record ? ');" class="btn btn-danger">Delete</a></td>
+   
+            {% endfor %}
+        </table>
+    </div>
+ 
+{% endblock %}

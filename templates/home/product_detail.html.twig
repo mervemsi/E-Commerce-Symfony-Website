@@ -1,0 +1,114 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %} {{ include ('home/_sidebar2.html.twig') }} {% endblock %}
+{% block body %} 
+
+<div class="well">
+
+<div class="container">
+
+
+
+<div class="span8">
+<div class="well">
+	<h3> {{ data[0].title }} </h3>	<br>			
+	
+    <div class="span7">	  
+
+        <div id="myCarousel" class="carousel slide cntr">
+	        <div class="carousel-inner">
+		        <div class="item active">
+			        <a href="" title="{{ data[0].title }}">
+			        <img src="{{ asset('uploads') }}/images/{{ data[0].image }}" style="..." alt="">
+			        </a>
+		        </div>
+		        {% for rs in imagelist %}	
+			    <div class="item">
+				<a href=""> <img style="..." src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+			    </div>
+		        {% endfor %}	
+	        </div>
+		    <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
+		    <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+	<form class="form-horizontal qtyFrm" method="post" action="{{ path('shopcart_new') }}">
+
+	<div class="control-group">
+		<label class="control-label"><span style='color:#ff6600'>Price :</span><span>{{ data[0].sprice }}₺</span></label>
+        <label class="control-label"><span style='color:#ff6600'>Quantity :</span></label>
+		<div class="controls">
+			<input type="number" name="shopcart[quantity]" value="1" max="{{ data[0].amount }}" class="span1" placeholder="Qty.">
+            <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+		</div>
+	</div>
+      <a href="{{ path('favourite_add', {'id':data[0].id}) }}" class="btn btn-warning btn-large pull-right"> <i class="icon-heart"></i></a>
+    <div class="control-group">
+        <label><span style='color:#ff6600'> Amount: </span>{{ data[0].amount }} items in stock</label>
+    </div>
+	<hr class="soft">
+
+	<p>
+		
+        {{ data[0].detail|raw }}
+	</p>
+    <div class="form-actions">
+		<input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+        <button type="submit" class="btn btn-large btn-primary pull-right">Add to cart <i class=" icon-shopping-cart"></i></button>
+    </div>
+</form> 
+</div>
+</div>
+<div class="span3"></div>
+<div class="span8">
+{{ include('messages.html.twig') }}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="widget-title"> 
+          <h5>Do you want to add a comment about this product ?</h5>
+        </div>
+          <form action="{{ path('comment_new', {'id':data[0].id}) }}" method="post" class="form-horizontal">
+            <div class="control-group">
+              <label>Your Comment</label>
+              <div>
+                <textarea rows="3" id="textarea" name="comment[commenttext]" class="span6"></textarea>
+              </div>
+            </div>
+            <div class=""> 	
+			  <input type="hidden" name="comment[status]" value="true"> 
+			  <input type="hidden" name="token" value="{{ csrf_token('form-comment') }}" />
+              <button type="submit" class="btn btn-success">Save</button>
+            </div>
+          </form>
+
+{% endif %}
+
+<div class="well">  
+<h5>COMMENTS</h5>
+  <table class="table" border="1">
+        <tbody>
+		{% for comment in commentss %}
+            <tr>
+                <td><i class="icon-flag"></i>&nbsp;&nbsp;&nbsp;{{ comment.commenttext }}</td>
+            </tr>
+			{% else %}
+			<tr>
+                <td colspan="6">No comment found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+ {% endblock %}

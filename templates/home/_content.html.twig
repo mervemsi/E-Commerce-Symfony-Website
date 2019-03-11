@@ -1,0 +1,122 @@
+<div class="well well-small">
+			<h4>Featured Products <small class="pull-right">10+ featured products</small></h4>
+			<div class="row-fluid">
+			<div id="featured" class="carousel slide">
+			<div class="carousel-inner">
+			  <div class="item active">
+			  <ul class="thumbnails">
+				
+				{% for rs in featuredproductstwo %}
+				
+				<li class="span3">
+				  <div class="thumbnail">
+				  <i class="tag"></i>
+					<a href="{{ path('product_detail', {'id': rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+					<div class="caption">
+					  <h5>{{ rs.title }}</h5>
+					   <h4><a class="btn" href="{{ path('product_detail', {'id': rs.id}) }}">VIEW</a>
+						 <span class="pull-right">{{ rs.sprice }}₺</span></h4>
+					</div>
+				  </div>
+				</li>
+
+				{% endfor %}
+
+			  </ul>
+			  </div>
+			   <div class="item">
+			  <ul class="thumbnails">
+				
+			  {% for rp in featuredproductsone %}
+				
+				<li class="span3">
+				  <div class="thumbnail">
+				  <i class="tag"></i>
+					<a href="{{ path('product_detail', {'id': rp.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rp.image }}" alt=""></a>
+					<div class="caption">
+					  <h5>{{ rp.title }}</h5>
+					   <h4><a class="btn" href="{{ path('product_detail', {'id': rp.id}) }}">VIEW</a>
+						 <span class="pull-right">{{ rp.sprice }}₺</span></h4>
+					</div>
+				  </div>
+				</li>
+
+				{% endfor %}
+			
+			  </ul>
+			  </div>
+			   <div class="item">
+			  <ul class="thumbnails">
+				
+				{% for rk in featuredproductsthree %}
+				
+				<li class="span3">
+				  <div class="thumbnail">
+				  <i class="tag"></i>
+					<a href="{{ path('product_detail', {'id': rk.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rk.image }}" alt=""></a>
+					<div class="caption">
+					  <h5>{{ rk.title }}</h5>
+					   <h4><a class="btn" href="{{ path('product_detail', {'id': rk.id}) }}">VIEW</a>
+						 <span class="pull-right">{{ rk.sprice }}₺</span></h4>
+					</div>
+				  </div>
+				</li>
+
+				{% endfor %}
+
+			  </ul>
+			  </div>
+			   <div class="item">
+			  <ul class="thumbnails">
+				
+					{% for re in featuredproductsfour %}
+				
+				<li class="span3">
+				  <div class="thumbnail">
+				  <i class="tag"></i>
+					<a href="{{ path('product_detail', {'id': re.id}) }}"><img src="{{ asset('uploads') }}/images/{{ re.image }}" alt=""></a>
+					<div class="caption">
+					  <h5>{{ re.title }}</h5>
+					   <h4><a class="btn" href="{{ path('product_detail', {'id': re.id}) }}">VIEW</a>
+						 <span class="pull-right">{{ re.sprice }}₺</span></h4>
+					</div>
+				  </div>
+				</li>
+
+				{% endfor %}
+				
+			  </ul>
+			  </div>
+			  </div>
+			  <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
+			  <a class="right carousel-control" href="#featured" data-slide="next">›</a>
+			  </div>
+			  </div>
+		</div>
+
+<h4>Latest Products </h4>
+			  <ul class="thumbnails">
+
+				{% for rs in latestproducts %}
+
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="{{ path('product_detail', {'id': rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""/></a>
+					<div class="caption">
+					  <h5>{{ rs.title }}</h5>
+					  <p> {{ rs.description }} </p>
+					  <h4 style="text-align:center"><a class="btn" href="{{ path('product_detail', {'id': rs.id}) }}"> 
+						<i class="icon-zoom-in"></i></a> <a class="btn" href="{{ path('shopcart_new_direct', {'id': rs.id}) }}">Add to <i class="icon-shopping-cart"></i></a> 
+						<a class="btn btn-primary" href="#">{{ rs.sprice }}₺</a></h4>
+					</div>
+				  </div>
+				</li>
+
+				{% endfor %}
+				
+			  </ul>	
+
+		</div>
+		</div>
+	</div>
+</div>

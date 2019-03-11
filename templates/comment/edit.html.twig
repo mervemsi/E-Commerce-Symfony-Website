@@ -1,0 +1,23 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Edit Comment {% endblock %}
+{% block sidebar %} {{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+{% block body %} 
+
+    <div class="span9">
+    <div class="well">
+    <h3> Edit Comment</h3>
+    {{ include ('/messages.html.twig') }}
+    <table class="table">
+
+    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }} <br> <br>
+
+    <a href="{{ path('comment_index') }}" class="btn btn-primary">Back to list</a> <br>
+
+</table>
+
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

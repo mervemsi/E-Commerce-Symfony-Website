@@ -1,0 +1,42 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Comment List {% endblock %}
+{% block sidebar %} {{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+{% block body %} 
+
+    <div class="span9">
+    <div class="well">
+    <h3>Comment List</h3>
+    {{ include ('/messages.html.twig') }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product id</th>
+                <th>Comment text</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.productid }}</td>
+                <td>{{ comment.commenttext }}</td>
+                <td>{{ comment.status }}</td>
+                <td><a href="{{ path('comment_edit', {'id': comment.id}) }}" class="btn btn-primary">Edit</a></td>
+                <td><a href="{{ path('comment_del', {'id':comment.id}) }}" onclick="return confirm('Are you sure to delete this record ? ');" class="btn btn-danger">Delete</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

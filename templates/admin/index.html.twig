@@ -1,0 +1,73 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Shopping Admin Panel {% endblock %}
+
+{% block body %}
+{% block content %}
+<!-- Content =====================================================================-->
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"></a> </div>
+    <h1>ADMIN PANEL</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+
+      <div class="quick-actions_homepage">
+       <ul class="quick-actions">
+        <li class="bg_lb"> <a href="{{ url('admin') }}"> <i class="icon-dashboard"></i> My Dashboard </a> </li>
+        <li class="bg_lg span3"> <a href="{{ path('admin_orders_index', {'slug': 'new'}) }}"> <i class="icon-signal"></i> New Orders</a> </li>
+        <li class="bg_ly"> <a href="{{ path('admin_orders_index', {'slug': 'accepted'}) }}"> <i class="icon-inbox"></i>Accepted Orders </a> </li>
+        <li class="bg_lo"> <a href="{{ path('admin_orders_index', {'slug': 'inshipping'}) }}"> <i class="icon-th"></i> Inshipping</a> </li>
+        <li class="bg_ls"> <a href="{{ path('admin_orders_index', {'slug': 'canceled'}) }}"> <i class="icon-fullscreen"></i> Canceled Orders </a> </li>
+        <li class="bg_lo span3"> <a href="{{ path('admin_orders_index', {'slug': 'completed'}) }}"> <i class="icon-th-list"></i> Completed Orders </a> </li>
+        <li class="bg_ls"> <a href="{{ path('admin_product_index') }}"> <i class="icon-tint"></i> Products </a> </li>
+        <li class="bg_lb"> <a href="{{ path('admin_category_index') }}"> <i class="icon-pencil"></i>Categories</a> </li>
+        <li class="bg_lg"> <a href="{{ path('admin_messages_index') }}"> <i class="icon-calendar"></i> User Messages </a> </li>
+        <li class="bg_lr"> <a href="{{ path('user_index') }}"> <i class="icon-info-sign"></i> Users</a> </li>
+      </ul>
+    </div>
+
+<br>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
+            <h5>Progress Box</h5>
+          </div>
+          <div class="widget-content">
+            <ul class="unstyled">
+              <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 81% Clicks <span class="pull-right strong">567</span>
+                <div class="progress progress-striped ">
+                  <div style="width: 81%;" class="bar"></div>
+                </div>
+              </li>
+              <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 72% Uniquie Clicks <span class="pull-right strong">507</span>
+                <div class="progress progress-success progress-striped ">
+                  <div style="width: 72%;" class="bar"></div>
+                </div>
+              </li>
+              <li> <span class="icon24 icomoon-icon-arrow-down-2 red"></span> 53% Impressions <span class="pull-right strong">457</span>
+                <div class="progress progress-warning progress-striped ">
+                  <div style="width: 53%;" class="bar"></div>
+                </div>
+              </li>
+              <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 3% Online Users <span class="pull-right strong">8</span>
+                <div class="progress progress-danger progress-striped ">
+                  <div style="width: 3%;" class="bar"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Content part -->
+
+{% endblock %}
+{% endblock %}

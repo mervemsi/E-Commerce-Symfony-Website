@@ -1,0 +1,27 @@
+
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+	<!-- Sidebar ================================================== -->
+	<div id="sidebar" class="span2.5">
+		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{{ asset('themes') }}/images/ico-cart.png" alt="cart">
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		{{ count }} Items in your cart  <span class="badge badge-warning pull-right">{{ total }}₺</span></a></div> 
+		{% else %}
+		0 Items in your cart  <span class="badge badge-warning pull-right">0.00₺</span></a></div> 
+		{% endif %}
+		
+		<ul id="sideManu" class="nav nav-tabs nav-stacked">
+			<li><a href="{{ path('userpanel_show') }}"> My Information</a></li>
+			<li><a href="{{ path('userpanel_edit') }}"> Edit Profile </a></li>
+			<li><a href="{{ path('orders_index') }}">My Orders</a></li>
+			<li><a href="{{ path('shopcart_index') }}">My ShopCart</a></li>
+			<li><a href="{{ path('favourite_index') }}">My Favourite Products</a></li>
+            <li><a href="{{ path('comment_index') }}">My Comments</a></li>
+            <li><a href="{{ path('app_logout') }}">Log Out</a></li>
+		</ul>
+	</div>
+ 
+	
+<!-- Sidebar end=============================================== -->
+

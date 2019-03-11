@@ -1,0 +1,52 @@
+<form action="#" method="post" class="form-horizontal">
+            
+            <div class="control-group">
+              <label class="control-label">Parent Id(Üst Kategori) :</label>
+              <div class="controls">
+                <select name="category[parentid]" class="span11">
+
+                    {% if category.parentid!=0 %}
+                    <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                    {% else %}
+                    <option value="0">Main category</option>
+                    {% endif %}
+
+                    <option value="0">Main category</option>
+                    {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Title(Başlık) :</label>
+              <div class="controls">
+                <input type="text" name="category[title]" value="{{ category.title }}" class="span11" placeholder="Title">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Keywords(Anahtar Kelimeler) :</label>
+              <div class="controls">
+                <input type="text" name="category[keywords]" value="{{ category.keywords }}" class="span11" placeholder="Enter keyword">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Description(Kısa Açıklama):</label>
+              <div class="controls">
+                <input type="text" name="category[description]" value="{{ category.description }}" class="span11" placeholder="Enter description">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Status(Aktiflik Durumu) :</label>
+              <div class="controls">
+                <select name="category[status]" value="{{ category.status }}" class="span11" placeholder="Select status">
+                    <option>true</option>
+                    <option>false</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="submit" class="btn btn-success">Save</button>
+            </div>
+          </form>

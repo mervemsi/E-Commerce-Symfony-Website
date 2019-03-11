@@ -1,0 +1,29 @@
+{{ include('messages.html.twig') }}
+<form name="user" method="post" class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label">User ID :</label>
+    <div class="controls">
+      <input type="text" name="favourite[userid]" value="{{ favourite.userid }}" class="span5">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Product ID :</label>
+    <div class="controls">
+      <input type="email" name="favourite[productid]" value="{{ favourite.productid }}" class="span5">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Status :</label>
+    <div class="controls">
+      <input type="text" name="favourite[status]" value="{{ favourite.status }}" class="span5">
+    </div>
+  </div>
+
+   <div class="form-actions">
+      <input type="hidden" name="favourite[status]" value="true">  
+      <input type="hidden" name="token" value="{{ csrf_token('user-add') }}"/> 
+      <button type="submit" class="btn btn-success"> Save </button>
+   </div>
+</form>
+

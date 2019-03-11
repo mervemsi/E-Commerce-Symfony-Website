@@ -1,0 +1,17 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Edit User Information {% endblock %}
+{% block sidebar %} {{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+
+{% block body %}
+    <div class="span9">
+        <div class="well">
+            <h1>Edit User Information</h1>
+
+            {{ include('userpanel/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div> 
+  </div>
+</div>
+   
+{% endblock %}
